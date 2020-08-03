@@ -1,0 +1,17 @@
+[
+  {
+    "Frecuency": "jpg",
+    "value ": 2,
+    "frecuency": 32
+  },
+  {
+    "Frecuency": "png",
+    "value ": 4,
+    "frecuency": 32
+  },
+  {
+    "Frecuency": "gif",
+    "value ": 9,
+    "frecuency": 32
+  }
+]
