@@ -1,0 +1,11 @@
+{
+  "name": "pro-d3",
+  "version": "1.0.0",
+  "description": "book pro d3 js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Carlos Enrique Ramírez Flores",
+  "license": "MIT"
+}
