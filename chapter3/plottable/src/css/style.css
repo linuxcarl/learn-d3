@@ -1,0 +1,18 @@
+body{
+    background: #eeeeee;
+}
+svg{
+    border: solid 1px #888888;
+    background: white;
+}
+.bar {
+    fill: steelblue;
+}
+
+.bar:hover {
+    fill: rgb(116, 114, 240);
+}
+
+.axis--x path {
+    display: none;
+}
