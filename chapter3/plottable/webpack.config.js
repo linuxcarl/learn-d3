@@ -1,9 +1,9 @@
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, "./src/ts/app.ts"),
+    app: path.resolve(__dirname, "./src/js/app.js"),
   },
   mode: "development",
   output: {
@@ -14,7 +14,7 @@ module.exports = {
     rules: [
       {
         enforce: "pre",
-        test: /\.ts$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         loader: "eslint-loader",
         options: {
@@ -23,19 +23,19 @@ module.exports = {
         },
       },
       {
-        test: /\.ts?$/,
-        use: 'ts-loader',
+        test: /\.(js)$/,
         exclude: /node_modules/,
+        use: ['babel-loader'],
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: path.resolve(__dirname, "./public/css/style.css"),
+      filename: path.resolve(__dirname,'./public/css/style.css'),
     }),
   ],
 };
