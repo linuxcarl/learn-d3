@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 charts</title>
+    <style>
+        body {
+            color: #1b1e23;
+            font-size: small;
+            font-family: sans-serif;
+            height: calc(100vh - 2em);
+            margin: 1em;
+            display: flex;
+        }
+
+        body>* {
+            flex: auto;
+        }
+
+        .domain,
+        .gridline-y,
+        .gridline-x,
+        .annotation-line>line {
+            stroke: currentColor;
+            stroke-opacity: 0.1;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id='barChart'></div>
+    <script src="./js/app.js"></script>
+</body>
+</html>

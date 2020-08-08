@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/seedrandom/seedrandom.js"></script>
+    <script>Math.seedrandom('a22ebc7c488a3a47');</script>
+    <script src="https://unpkg.com/mockdate/src/mockdate.js"></script>
+    <script>MockDate.set('2000-01-01', 0);</script>
+    <script src="https://unpkg.com/d3/dist/d3.js"></script>
+    <script src="https://unpkg.com/d3fc/build/d3fc.js"></script>
+    <style>
+        body {
+            color: #1b1e23;
+            font-size: small;
+            font-family: sans-serif;
+            height: calc(100vh - 2em);
+            margin: 1em;
+            display: flex;
+        }
+
+        body>* {
+            flex: auto;
+        }
+
+        .domain,
+        .gridline-y,
+        .gridline-x,
+        .annotation-line>line {
+            stroke: currentColor;
+            stroke-opacity: 0.1;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+</head>
+
+<body>
+    <div id="chart"></div>
+
+    <script>
+        const stream = fc.randomFinancial().stream();
+        const data = stream.take(110);
+
+        const yExtent = fc.extentLinear().accessors([d => d.high, d => d.low]);
+
+        const xExtent = fc.extentDate().accessors([d => d.date]);
+
+        const gridlines = fc.annotationSvgGridline();
+        const candlestick = fc.seriesSvgCandlestick();
+        const multi = fc.seriesSvgMulti().series([gridlines, candlestick]);
+
+        const chart = fc
+            .chartCartesian(d3.scaleTime(), d3.scaleLinear())
+            .yDomain(yExtent(data))
+            .xDomain(xExtent(data))
+            .svgPlotArea(multi);
+
+        function renderChart() {
+            data.push(stream.next());
+            data.shift();
+
+            chart.yDomain(yExtent(data)).xDomain(xExtent(data));
+
+            d3.select('#chart')
+                .datum(data)
+                .call(chart);
+        }
+
+        renderChart();
+        setInterval(renderChart, 200);
+    </script>
+</body>
+
+</html>
