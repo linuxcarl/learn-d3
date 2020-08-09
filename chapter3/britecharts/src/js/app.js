@@ -7,7 +7,7 @@ const britechartsBar = () => {
   const barChart = bar();
   const barContainer = select("#chart");
 
-  barChart.valueLabel("frequency").nameLabel("letter").width(900).height(600);
+  barChart.valueLabel("frequency").nameLabel("letter").width(900).height(600).isAnimated(true);
 
   barContainer.datum(letterFrequency).call(barChart);
 };
