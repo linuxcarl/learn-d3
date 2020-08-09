@@ -7,11 +7,17 @@ const britechartsBar = () => {
   const barChart = bar();
   const barContainer = select("#chart");
 
-  barChart.valueLabel("frequency").nameLabel("letter").width(900).height(600).isAnimated(true);
-
+  barChart
+    .valueLabel("frequency")
+    .nameLabel("letter")
+    .width(900)
+    .height(600)
+    .isAnimated(true)
+    .enableLabels(true)
+    .labelsNumberFormat('.0%');
   barContainer.datum(letterFrequency).call(barChart);
 };
 
 (function () {
-    britechartsBar();
+  britechartsBar();
 })();
